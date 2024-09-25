@@ -1,7 +1,7 @@
 package com.example.connection;
 
-import com.google.inject.Inject;
 import com.example.database.connection.ConnectionManager;
+import com.google.inject.Inject;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

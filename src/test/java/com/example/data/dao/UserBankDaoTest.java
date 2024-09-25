@@ -2,10 +2,10 @@ package com.example.data.dao;
 
 import com.example.AbstractDaoTest;
 import com.example.data.model.BankEntity;
+import com.example.data.model.UserEntity;
 import com.example.exception.BadRequestException;
 import com.example.exception.BankNotFoundException;
 import com.example.exception.UserNotFoundException;
-import com.example.data.model.UserEntity;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.provider.Arguments;
@@ -53,6 +53,11 @@ class UserBankDaoTest extends AbstractDaoTest {
     @Test
     void testInsertUserBanksByNotExistingUserId() {
         assertThrows(UserNotFoundException.class, () -> userBankDao.insertUserBanksByUserId(List.of(2), 4));
+    }
+
+    @Test
+    void testInsertUserBanksByNotExistingBankId() {
+        assertThrows(BankNotFoundException.class, () -> userBankDao.insertUserBanksByUserId(List.of(55), 1));
     }
 
     @Test

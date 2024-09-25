@@ -9,11 +9,14 @@ public class CountryValidator {
     }
 
     public boolean validate(final CountryModifyRequest countryModifyRequest, final int id) {
-        return id >= 0 && countryModifyRequest.getId() == id && validateName(countryModifyRequest.getName());
+        return id >= 0
+                && countryModifyRequest.getId() == id
+                && validateName(countryModifyRequest.getName());
     }
 
     private boolean validateName(final String firstCountryName) {
         final String name = firstCountryName;
-        return name != null && !name.isEmpty();
+        return name != null
+                && !name.isEmpty();
     }
 }

@@ -1,9 +1,9 @@
 package com.example;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
 import com.example.connection.DependencyInjectionConfigTest;
 import com.example.utils.SqlUtils;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;

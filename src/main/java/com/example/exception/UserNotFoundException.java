@@ -9,11 +9,4 @@ public class UserNotFoundException extends EntityNotFoundException {
     public UserNotFoundException(int id) {
         super(MessageFormat.format("User with id {0} not found!", id));
     }
-
-    /**
-     * @param message
-     */
-    public UserNotFoundException(final String message) {
-        super(message);
-    }
 }

@@ -6,11 +6,17 @@ import com.example.requset.BankModifyRequest;
 public class BankValidator {
     public boolean validate(final BankInsertRequest bankInsertRequest) {
         final String bankName = bankInsertRequest.getName();
-        return bankInsertRequest.getCountryId() >= 0 && bankName != null && !bankName.isEmpty();
+        return bankInsertRequest.getCountryId() >= 0
+                && bankName != null
+                && !bankName.isEmpty()
+                && bankInsertRequest.getCountryId() != 0;
     }
 
     public boolean validate(final BankModifyRequest bankModifyRequest, final int id) {
         final String bankName = bankModifyRequest.getName();
-        return id >= 0 && bankName != null && !bankName.isEmpty() && bankModifyRequest.getId() == id;
+        return id >= 0 && bankName != null
+                && !bankName.isEmpty()
+                && bankModifyRequest.getId() == id
+                && bankModifyRequest.getCountryId() != 0;
     }
 }

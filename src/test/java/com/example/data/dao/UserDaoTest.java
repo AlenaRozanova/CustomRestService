@@ -2,9 +2,9 @@ package com.example.data.dao;
 
 import com.example.AbstractDaoTest;
 import com.example.data.model.BankEntity;
+import com.example.data.model.UserEntity;
 import com.example.exception.BankNotFoundException;
 import com.example.exception.UserNotFoundException;
-import com.example.data.model.UserEntity;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

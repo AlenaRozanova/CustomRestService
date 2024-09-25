@@ -19,15 +19,7 @@ public class UserBankRequest {
         return userId;
     }
 
-    public void setUserId(final int userId) {
-        this.userId = userId;
-    }
-
     public List<Integer> getBanksId() {
         return banksId;
-    }
-
-    public void setBanksId(final List<Integer> banksId) {
-        this.banksId = banksId;
     }
 }

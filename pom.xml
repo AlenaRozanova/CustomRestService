@@ -180,53 +180,6 @@
       </plugin>
 
       <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.7</version>
-        <configuration>
-          <excludes>
-<!--            <exclude>com/example/country/data/model/**/*.class</exclude>-->
-<!--            <exclude>com/example/country/model/**/*.class</exclude>-->
-<!--            <exclude>com/example/country/mapper/**/*.class</exclude>-->
-<!--            <exclude>com/example/user/data/model/**/*.class</exclude>-->
-<!--            <exclude>com/example/user/model/**/*.class</exclude>-->
-<!--            <exclude>com/example/user/mapper/**/*.class</exclude>-->
-<!--            <exclude>com/example/bank/data/model/**/*.class</exclude>-->
-<!--            <exclude>com/example/bank/model/**/*.class</exclude>-->
-<!--            <exclude>com/example/bank/mapper/**/*.class</exclude>-->
-<!--            <exclude>com/example/user_bank/data/model/**/*.class</exclude>-->
-<!--            <exclude>com/example/user_bank/model/**/*.class</exclude>-->
-<!--            <exclude>com/example/user_bank/mapper/**/*.class</exclude>-->
-<!--            <exclude>com/example/config/**/*.class</exclude>-->
-<!--            <exclude>com/example/connection/**/*.class</exclude>-->
-          </excludes>
-        </configuration>
-        <executions>
-          <execution>
-            <id>default-prepare-agent</id>
-            <goals>
-              <goal>prepare-agent</goal>
-            </goals>
-            <configuration>
-              <destFile>${project.build.directory}/coverage-reports/jacoco.exec</destFile>
-              <propertyName>surefireArgLine</propertyName>
-            </configuration>
-          </execution>
-          <execution>
-            <id>default-report</id>
-            <phase>test</phase>
-            <goals>
-              <goal>report</goal>
-            </goals>
-            <configuration>
-              <dataFile>${project.build.directory}/coverage-reports/jacoco.exec</dataFile>
-              <outputDirectory>${project.reporting.outputDirectory}/jacoco</outputDirectory>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
         <version>3.4.0</version>

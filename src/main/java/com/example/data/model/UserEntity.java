@@ -90,24 +90,4 @@ public class UserEntity {
     public int hashCode() {
         return Objects.hash(id, name, email, sex, bankEntitySet);
     }
-
-    public String toShortString() {
-        return "UserEntity{" +
-               "id=" + id +
-               ", name='" + name + '\'' +
-               ", email='" + email + '\'' +
-               ", sex='" + sex + '\'' +
-               '}';
-    }
-
-    @Override
-    public String toString() {
-        return "UserEntity{" +
-               "id=" + id +
-               ", name='" + name + '\'' +
-               ", email='" + email + '\'' +
-               ", sex='" + sex + '\'' +
-               ", userEntities=" + bankEntitySet +
-               '}';
-    }
 }

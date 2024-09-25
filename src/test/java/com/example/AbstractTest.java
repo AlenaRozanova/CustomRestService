@@ -1,7 +1,7 @@
 package com.example;
 
-import com.example.data.model.CountryEntity;
 import com.example.data.model.BankEntity;
+import com.example.data.model.CountryEntity;
 import com.example.data.model.UserEntity;
 import org.junit.jupiter.api.BeforeAll;
 
@@ -24,9 +24,9 @@ public class AbstractTest {
         bankEntityFirst = new BankEntity(1, "bank 1", countryEntityFirst);
         bankEntitySecond = new BankEntity(2, "bank 2", countryEntitySecond);
         bankEntityThird = new BankEntity(3, "bank 3", countryEntityFirst);
-        userEntityFirst = new UserEntity(1, "name1", "1@mail.ru", "RUS");
-        userEntitySecond = new UserEntity(2, "name2", "2@mail.ru", "US");
-        userEntityThird = new UserEntity(3, "name3", "3@mail.ru", "EN");
+        userEntityFirst = new UserEntity(1, "name1", "1@mail.ru", "male");
+        userEntitySecond = new UserEntity(2, "name2", "2@mail.ru", "female");
+        userEntityThird = new UserEntity(3, "name3", "3@mail.ru", "male");
 
         countryEntityFirst.setBankEntities(Set.of(bankEntityFirst, bankEntityThird));
         countryEntitySecond.setBankEntities(Set.of(bankEntitySecond));

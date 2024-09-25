@@ -1,16 +1,9 @@
 package com.example.connection;
 
+import com.example.data.dao.*;
+import com.example.database.connection.ConnectionManager;
 import com.google.inject.Provides;
 import com.google.inject.servlet.ServletModule;
-import com.example.data.dao.CountryDao;
-import com.example.data.dao.CountryDaoImpl;
-import com.example.data.dao.BankDao;
-import com.example.data.dao.BankDaoImpl;
-import com.example.database.connection.ConnectionManager;
-import com.example.data.dao.UserDao;
-import com.example.data.dao.UserDaoImpl;
-import com.example.data.dao.UserBankDao;
-import com.example.data.dao.UserBankDaoImpl;
 
 public class DependencyInjectionConfigTest extends ServletModule {
     private String jdbcUrl;

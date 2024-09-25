@@ -74,24 +74,4 @@ public class BankEntity {
     public int hashCode() {
         return Objects.hash(id);
     }
-
-    public String toShortString() {
-        return "BankEntity{" +
-               "id=" + id +
-               ", name='" + name +
-               '}';
-    }
-
-    @Override
-    public String toString() {
-        return "BankEntity{" +
-               "id=" + id +
-               ", name='" + name + '\'' +
-               ", userBankEntities=" +
-               userEntities.stream()
-                       .map(UserEntity::toShortString)
-                       .collect(Collectors.joining(", ")) +
-               ", country=" + country.toShortString() +
-               '}';
-    }
 }

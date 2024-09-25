@@ -1,6 +1,7 @@
 package com.example.servlet;
 
 import com.example.exception.BankNotFoundException;
+import com.example.exception.NotProvidedException;
 import com.example.exception.UserNotFoundException;
 import com.example.requset.UserBankRequest;
 import com.example.service.UserBankService;
@@ -43,6 +44,15 @@ class UserBankServletTest {
     @Mock
     private UserBankService service;
 
+    @Test
+    void testPutRequest() {
+        assertThrows(NotProvidedException.class, () -> servlet.doPut(request, response));
+    }
+
+    @Test
+    void testGetRequest() {
+        assertThrows(NotProvidedException.class, () -> servlet.doGet(request, response));
+    }
 
     @Test
     void testPostRequest() throws Exception {
