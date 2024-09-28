@@ -19,6 +19,7 @@ public class UserResultSetMapper {
         UserEntity userEntity = new UserEntity();
         userEntity.setId(resultSet.getInt("id"));
         userEntity.setName(resultSet.getString("name"));
+        userEntity.setOld(resultSet.getInt("old"));
         userEntity.setSex(resultSet.getString("sex"));
         userEntity.setEmail(resultSet.getString("email"));
         userEntity.setBankEntitySet(bankDao.selectBanksByUserId(userEntity.getId()));
@@ -29,6 +30,7 @@ public class UserResultSetMapper {
         UserEntity userEntity = new UserEntity();
         userEntity.setId(resultSet.getInt("id"));
         userEntity.setName(resultSet.getString("name"));
+        userEntity.setOld(resultSet.getInt("old"));
         userEntity.setEmail(resultSet.getString("email"));
         userEntity.setSex(resultSet.getString("sex"));
         return userEntity;

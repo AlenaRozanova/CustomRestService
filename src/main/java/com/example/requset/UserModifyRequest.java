@@ -3,15 +3,17 @@ package com.example.requset;
 public class UserModifyRequest {
     private int id;
     private String name;
+    private int old;
     private String email;
     private String sex;
 
     public UserModifyRequest() {
     }
 
-    public UserModifyRequest(int id, String name, String email, String sex) {
+    public UserModifyRequest(int id, String name, int old, String email, String sex) {
         this.id = id;
         this.name = name;
+        this.old = old;
         this.email = email;
         this.sex = sex;
     }
@@ -22,6 +24,10 @@ public class UserModifyRequest {
 
     public String getName() {
         return name;
+    }
+
+    public int getOld() {
+        return old;
     }
 
     public String getEmail() {

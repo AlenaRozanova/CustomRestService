@@ -6,6 +6,7 @@ import com.example.data.model.CountryEntity;
 import com.example.data.model.UserEntity;
 import com.example.exception.BankNotFoundException;
 import com.example.exception.CountryNotFoundException;
+import com.example.exception.SQLRuntimeException;
 import com.example.exception.UserNotFoundException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -22,6 +23,15 @@ class BankDaoTest extends AbstractDaoTest {
     @BeforeAll
     public static void injectObjects() {
         bankDao = injector.getInstance(BankDao.class);
+    }
+
+    @Test
+    void testInsertBankSQLException() {
+        BankEntity bankEntity = new BankEntity();
+        CountryEntity country = new CountryEntity();
+        country.setId(1);
+        bankEntity.setCountry(country);
+        assertThrows(SQLRuntimeException.class, () -> bankDao.insertBank(bankEntity));
     }
 
     @Test

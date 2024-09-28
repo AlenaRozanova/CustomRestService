@@ -24,9 +24,9 @@ public class AbstractTest {
         bankEntityFirst = new BankEntity(1, "bank 1", countryEntityFirst);
         bankEntitySecond = new BankEntity(2, "bank 2", countryEntitySecond);
         bankEntityThird = new BankEntity(3, "bank 3", countryEntityFirst);
-        userEntityFirst = new UserEntity(1, "name1", "1@mail.ru", "male");
-        userEntitySecond = new UserEntity(2, "name2", "2@mail.ru", "female");
-        userEntityThird = new UserEntity(3, "name3", "3@mail.ru", "male");
+        userEntityFirst = new UserEntity(1, "name1", 19, "1@mail.ru", "male");
+        userEntitySecond = new UserEntity(2, "name2", 20, "2@mail.ru", "female");
+        userEntityThird = new UserEntity(3, "name3", 21, "3@mail.ru", "male");
 
         countryEntityFirst.setBankEntities(Set.of(bankEntityFirst, bankEntityThird));
         countryEntitySecond.setBankEntities(Set.of(bankEntitySecond));

@@ -10,6 +10,7 @@ import java.util.Set;
 public class UserEntity {
     private int id;
     private String name;
+    private int old;
     private String email;
     private String sex;
 
@@ -19,16 +20,10 @@ public class UserEntity {
         this.bankEntitySet = new HashSet<>();
     }
 
-    public UserEntity(String name, String email, String sex) {
-        this.name = name;
-        this.email = email;
-        this.sex = sex;
-        this.bankEntitySet = new HashSet<>();
-    }
-
-    public UserEntity(int id, String name, String email, String sex) {
+    public UserEntity(int id, String name, int old, String email, String sex) {
         this.id = id;
         this.name = name;
+        this.old = old;
         this.email = email;
         this.sex = sex;
         this.bankEntitySet = new HashSet<>();
@@ -40,6 +35,14 @@ public class UserEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getOld() {
+        return old;
+    }
+
+    public void setOld(int old) {
+        this.old = old;
     }
 
     public String getEmail() {
@@ -79,15 +82,11 @@ public class UserEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserEntity that = (UserEntity) o;
-        return id == that.id &&
-               Objects.equals(name, that.name) &&
-               Objects.equals(email, that.email) &&
-               Objects.equals(sex, that.sex) &&
-               Objects.equals(bankEntitySet, that.bankEntitySet);
+        return id == that.id && Objects.equals(name, that.name) && Objects.equals(old, that.old) && Objects.equals(email, that.email) && Objects.equals(sex, that.sex) && Objects.equals(bankEntitySet, that.bankEntitySet);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, email, sex, bankEntitySet);
+        return Objects.hash(id, name, old, email, sex, bankEntitySet);
     }
 }

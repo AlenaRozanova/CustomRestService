@@ -9,6 +9,7 @@ import java.util.Objects;
 public class UserResponse {
     private int id;
     private String name;
+    private int old;
     private String email;
     private String sex;
 
@@ -18,9 +19,10 @@ public class UserResponse {
     public UserResponse() {
     }
 
-    public UserResponse(int id, String name, String email, String sex, List<String> banksName) {
+    public UserResponse(int id, String name, int old, String email, String sex, List<String> banksName) {
         this.id = id;
         this.name = name;
+        this.old = old;
         this.email = email;
         this.sex = sex;
         this.banksName = banksName;
@@ -40,6 +42,14 @@ public class UserResponse {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getOld() {
+        return old;
+    }
+
+    public void setOld(int old) {
+        this.old = old;
     }
 
     public String getEmail() {
@@ -71,7 +81,7 @@ public class UserResponse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final UserResponse that = (UserResponse) o;
-        return id == that.id && Objects.equals(name, that.name) && Objects.equals(email, that.email) && Objects.equals(sex, that.sex) && Objects.equals(banksName, that.banksName);
+        return id == that.id && Objects.equals(name, that.name) && Objects.equals(old, that.old) && Objects.equals(email, that.email) && Objects.equals(sex, that.sex) && Objects.equals(banksName, that.banksName);
     }
 
     @Override
@@ -84,7 +94,8 @@ public class UserResponse {
         return "UserResponse{" +
                "id=" + id +
                ", name='" + name + '\'' +
-               ", email='" + email + '\'' +
+                ", old='" + old + '\'' +
+                ", email='" + email + '\'' +
                ", sex='" + sex + '\'' +
                ", banksName=" + banksName +
                '}';

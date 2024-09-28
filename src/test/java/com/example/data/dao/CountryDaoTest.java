@@ -2,7 +2,9 @@ package com.example.data.dao;
 
 import com.example.AbstractDaoTest;
 import com.example.data.model.CountryEntity;
+import com.example.data.model.UserEntity;
 import com.example.exception.CountryNotFoundException;
+import com.example.exception.SQLRuntimeException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -16,6 +18,11 @@ class CountryDaoTest extends AbstractDaoTest {
     @BeforeAll
     static void inject() {
         countryDao = injector.getInstance(CountryDao.class);
+    }
+
+    @Test
+    void testInsertCountrySQLException() {
+        assertThrows(SQLRuntimeException.class, () -> countryDao.insertCountry(new CountryEntity()));
     }
 
     @Test

@@ -4,6 +4,8 @@ import com.example.AbstractDaoTest;
 import com.example.data.model.BankEntity;
 import com.example.data.model.UserEntity;
 import com.example.exception.BankNotFoundException;
+import com.example.exception.PathVariableException;
+import com.example.exception.SQLRuntimeException;
 import com.example.exception.UserNotFoundException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -23,10 +25,16 @@ class UserDaoTest extends AbstractDaoTest {
     }
 
     @Test
+    void testInsertUserSQLException() {
+        assertThrows(SQLRuntimeException.class, () -> userDao.insertUser(new UserEntity()));
+    }
+
+    @Test
     void insertUser() {
         UserEntity userEntity = new UserEntity();
-        userEntity.setName("original bank name (NO)");
-        userEntity.setSex("RUS");
+        userEntity.setName("man");
+        userEntity.setOld(19);
+        userEntity.setSex("male");
         userEntity.setEmail("some@mail.ru");
         final boolean b = userDao.insertUser(userEntity);
         assertTrue(b);
@@ -57,8 +65,8 @@ class UserDaoTest extends AbstractDaoTest {
     void testUpdateUser() {
         UserEntity userEntity = new UserEntity();
         userEntity.setId(1);
-        userEntity.setName("original bank name (NO)");
-        userEntity.setSex("RUS");
+        userEntity.setName("name");
+        userEntity.setSex("male");
         userEntity.setEmail("some@mail.ru");
 
         final boolean b = userDao.updateUser(userEntity, userEntity.getId());
@@ -75,8 +83,8 @@ class UserDaoTest extends AbstractDaoTest {
     void testUpdateUserWithNotExistingId() {
         UserEntity userEntity = new UserEntity();
         userEntity.setId(4);
-        userEntity.setName("original bank name (NO)");
-        userEntity.setSex("RUS");
+        userEntity.setName("name");
+        userEntity.setSex("male");
         userEntity.setEmail("some@mail.ru");
 
         assertThrows(UserNotFoundException.class, () -> userDao.updateUser(userEntity, userEntity.getId()));
@@ -100,6 +108,7 @@ class UserDaoTest extends AbstractDaoTest {
         final UserEntity userEntity = userEntityOpt.get();
         assertEquals("Вася Пупкин", userEntity.getName());
         assertEquals("male", userEntity.getSex());
+        assertEquals(19, userEntity.getOld());
         assertEquals("pupkin@mail.ru", userEntity.getEmail());
         final List<String> usersBanksName = userEntity.getBankEntitySet().stream().map(BankEntity::getName).toList();
         assertEquals(List.of("СБЕР", "Citigroup"), usersBanksName);

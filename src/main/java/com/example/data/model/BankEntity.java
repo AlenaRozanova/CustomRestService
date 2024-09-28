@@ -17,12 +17,6 @@ public class BankEntity {
     public BankEntity() {
     }
 
-    public BankEntity(final Integer id, final String name) {
-        this.id = id;
-        this.name = name;
-        this.userEntities = new HashSet<>();
-    }
-
     public BankEntity(final int id, final String name, final CountryEntity country) {
         this.id = id;
         this.name = name;

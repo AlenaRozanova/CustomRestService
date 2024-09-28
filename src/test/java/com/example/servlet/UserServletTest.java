@@ -50,21 +50,21 @@ public class UserServletTest {
                 {
                    "id": 1,
                    "name": "user",
+                   "old": 19,
                    "email": "user@mail.ru",
-                   "sex": "RUS",
+                   "sex": "male",
                    "banks_name": [
                       "bank_1",
                       "bank_2"
                    ]
                 }
                 """;
-        final UserResponse userResponse = new UserResponse(1, "user",
+        final UserResponse userResponse = new UserResponse(1, "user", 19,
                 "user@mail.ru",
-                "RUS",
+                "male",
                 List.of("bank_1", "bank_2"));
         when(userService.getUserById(1)).thenReturn(userResponse);
         servlet.doGet(request, response);
-
 
         Mockito.verify(response).setContentType("application/json");
         Mockito.verify(response).setCharacterEncoding("UTF-8");
@@ -95,8 +95,9 @@ public class UserServletTest {
                 {
                    "id": 1,
                    "name": "user",
+                   "old": 19,
                    "email": "user@mail.ru",
-                   "sex": "RUS"
+                   "sex": "male"
                 }
                 """;
         mockRequestReader(inputJson);
@@ -113,8 +114,9 @@ public class UserServletTest {
                 {
                    "id": 1,
                    "name": "user",
+                   "old": 20,
                    "email": "user@mail.ru",
-                   "sex": "RUS"
+                   "sex": "male"
                 }
                 """;
         mockRequestReader(inputJson);
@@ -135,8 +137,9 @@ public class UserServletTest {
         final String inputJson = """
                 {
                    "name": "user",
+                   "old": 21,
                    "email": "user@mail.ru",
-                   "sex": "RUS"
+                   "sex": "male"
                 }
                 """;
         mockRequestReader(inputJson);

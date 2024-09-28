@@ -23,18 +23,18 @@ import java.util.Set;
  */
 public class UserDaoImpl implements UserDao {
     Logger log = LogManager.getLogger(UserDaoImpl.class);
-    private static final String INSERT_USER = "INSERT INTO users (name, email, sex) VALUES (?, ?, ?)";
+    private static final String INSERT_USER = "INSERT INTO users (name, old, email, sex) VALUES (?, ?, ?, ?)";
 
-    private static final String SELECT_USER_BY_ID = "SELECT id, name, email, sex FROM users WHERE id =?";
+    private static final String SELECT_USER_BY_ID = "SELECT id, name, old, email, sex FROM users WHERE id =?";
 
     private static final String SELECT_USERS_BY_BOOK_ID = """
-            SELECT id, name, email, sex
+            SELECT id, name, old, email, sex
             FROM users u
             JOIN banks_users bu ON (u.id = bu.user_id)
             WHERE bu.bank_id = ?
             """;
     private static final String DELETE_USER = "DELETE FROM users WHERE id = ?";
-    private static final String UPDATE_USER = "UPDATE users SET name = ?, email= ?, sex =? WHERE id = ?";
+    private static final String UPDATE_USER = "UPDATE users SET name = ?, old = ?, email= ?, sex =? WHERE id = ?";
 
     private static final String COUNT_USER_BY_ID = """
             SELECT count(*) count
@@ -67,6 +67,7 @@ public class UserDaoImpl implements UserDao {
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USER)) {
             int idx = 0;
             preparedStatement.setString(++idx, userEntity.getName());
+            preparedStatement.setInt(++idx, userEntity.getOld());
             preparedStatement.setString(++idx, userEntity.getEmail());
             preparedStatement.setString(++idx, userEntity.getSex());
             result = preparedStatement.executeUpdate() > 0;
@@ -136,6 +137,7 @@ public class UserDaoImpl implements UserDao {
              PreparedStatement statementUserUpdate = connection.prepareStatement(UPDATE_USER);) {
             int idx = 0;
             statementUserUpdate.setString(++idx, userEntity.getName());
+            statementUserUpdate.setInt(++idx, userEntity.getOld());
             statementUserUpdate.setString(++idx, userEntity.getEmail());
             statementUserUpdate.setString(++idx, userEntity.getSex());
             statementUserUpdate.setInt(++idx, userEntity.getId());

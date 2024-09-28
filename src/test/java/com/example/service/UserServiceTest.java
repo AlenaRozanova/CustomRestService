@@ -43,19 +43,19 @@ class UserServiceTest extends AbstractTest {
     @Test
     void testAddUser() {
         when(userDao.insertUser(any())).thenReturn(true);
-        UserInsertRequest userInsertRequest = new UserInsertRequest("name", "email", "sex");
+        UserInsertRequest userInsertRequest = new UserInsertRequest("name", 19, "email", "sex");
         assertDoesNotThrow(() -> userService.addUser(userInsertRequest));
     }
 
     @Test
     void testAddUserWithWrongEmail() {
-        UserInsertRequest userInsertRequest = new UserInsertRequest("name", null, "sex");
+        UserInsertRequest userInsertRequest = new UserInsertRequest("name", 20, null, "sex");
         assertThrows(BadRequestException.class, () -> userService.addUser(userInsertRequest));
     }
 
     @Test
     void testAddUserWithWrongName() {
-        UserInsertRequest userInsertRequest = new UserInsertRequest(null, "email", "sex");
+        UserInsertRequest userInsertRequest = new UserInsertRequest(null, 22, "email", "sex");
         assertThrows(BadRequestException.class, () -> userService.addUser(userInsertRequest));
     }
 
@@ -64,6 +64,7 @@ class UserServiceTest extends AbstractTest {
         when(userDao.selectUserById(3)).thenReturn(Optional.ofNullable(userEntityThird));
         UserResponse expected = new UserResponse(3,
                 "name3",
+                19,
                 "3@mail.ru",
                 "EN",
                 List.of(bankEntityThird.getName()));
@@ -81,31 +82,31 @@ class UserServiceTest extends AbstractTest {
 
     @Test
     void testUpdateUser() {
-        UserModifyRequest userModifyRequest = new UserModifyRequest(1, "newName", "newEmail", "newSex");
+        UserModifyRequest userModifyRequest = new UserModifyRequest(1, "newName", 18, "newEmail", "newSex");
         assertDoesNotThrow(() -> userService.updateUser(userModifyRequest, 1));
     }
 
     @Test
     void testUpdateUserWithWrongPathVariableId() {
-        UserModifyRequest userModifyRequest = new UserModifyRequest(1, "newName", "newEmail", "newSex");
+        UserModifyRequest userModifyRequest = new UserModifyRequest(1, "newName", 22, "newEmail", "newSex");
         assertThrows(BadRequestException.class, () -> userService.updateUser(userModifyRequest, 2));
     }
 
     @Test
     void testUpdateUserWithNullName() {
-        UserModifyRequest userModifyRequest = new UserModifyRequest(1, null, "newEmail", "newSex");
+        UserModifyRequest userModifyRequest = new UserModifyRequest(1, null, 33, "newEmail", "newSex");
         assertThrows(BadRequestException.class, () -> userService.updateUser(userModifyRequest, 1));
     }
 
     @Test
     void testUpdateUserWithNullEmail() {
-        UserModifyRequest userModifyRequest = new UserModifyRequest(1, "name", null, "newSex");
+        UserModifyRequest userModifyRequest = new UserModifyRequest(1, "name", 44, null, "newSex");
         assertThrows(BadRequestException.class, () -> userService.updateUser(userModifyRequest, 1));
     }
 
     @Test
     void testUpdateUserWithNotExistingUserId() {
-        UserModifyRequest userModifyRequest = new UserModifyRequest(4, "newName", "newEmail", "newSex");
+        UserModifyRequest userModifyRequest = new UserModifyRequest(4, "newName", 55, "newEmail", "newSex");
         doThrow(new UserNotFoundException(4)).when(userDao).updateUser(any(), eq(4));
         assertThrows(UserNotFoundException.class, () -> userService.updateUser(userModifyRequest, 4));
     }
